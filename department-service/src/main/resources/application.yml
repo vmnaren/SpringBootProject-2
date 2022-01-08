@@ -1,0 +1,34 @@
+server:
+  port: 9001
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+spring:
+  profiles: qa
+  application:
+    name: DEPARTMENT-SERVICE
+  zipkin:
+    base-url: http://localhost:9411/
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
+
+welcome:
+  message: Welcome to vmnaren Serice Controller
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exlude: "env, beans"
